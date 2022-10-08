@@ -1,7 +1,8 @@
+
 import pickle
 import streamlit as st
 
-pickle_in = open('modelmodel.pkl', 'rb')
+pickle_in = open('modelmodel2.pkl', 'rb')
 
 clf = pickle.load(pickle_in)
 
@@ -13,13 +14,13 @@ def make_prediction(bhk, Bathroom, Size, City):
         city_enc = 5
     elif City == 'Chennai':
         city_enc = 1
-    elif City == 'Banglore':
+    elif City == 'Bangalore':
         city_enc = 0
     elif City == 'Hyderabad':
         city_enc = 3
     elif City == 'Delhi':
         city_enc = 2
-    elif City == 'Kolkota':
+    elif City == 'Kolkata':
         city_enc = 4
     
     prediction = clf.predict([[bhk, Bathroom, Size, city_enc]])[0]
@@ -40,7 +41,7 @@ def main():
     st.markdown(html_temp, unsafe_allow_html = True)
 
     #following lines create the visuals
-    City = st.selectbox('City', (' Mumbai','Chennai','Bangalore','Hyderabad','Delhi','Kolkata'))    
+    City = st.selectbox('City', ('Mumbai','Chennai','Bangalore','Hyderabad','Delhi','Kolkata'))    
     Bathroom = st.number_input('Enter number of Bathroom')
     Size = st.number_input('Enter Size of the Land')
     bhk = st.number_input('Enter number of BHK')
