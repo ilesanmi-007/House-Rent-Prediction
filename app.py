@@ -29,21 +29,21 @@ def make_prediction(bhk, Bathroom, Size, City):
 def main():
     #front end elements
     html_temp = """
-    <div style = "background-color:green;padding:13px">
-    <h1 style = "color:blue;text-align:center;"> House Prices Prediction by Ilesanmi </h1>
+    <div style = "background-color:green;padding:10px">
+    <h1 style = "color:white;text-align:center;"> House Prices Prediction by Ilesanmi </h1>
     </div>
     """
 
     #front end 
-    #st.markdown("![](https://miro.medium.com/max/640/1*D6s2K1y7kjE14swcgITB1w.png)")
+    st.markdown("![](https://cdn.modernghana.com/story_/780/420/424201721206_6_222124n01_0.jpg)")
     
     st.markdown(html_temp, unsafe_allow_html = True)
 
     #following lines create the visuals
     City = st.selectbox('City', ('Mumbai','Chennai','Bangalore','Hyderabad','Delhi','Kolkata'))    
     Bathroom = st.number_input('Enter number of Bathroom')
-    Size = st.number_input('Enter Size of the Land')
-    bhk = st.number_input('Enter number of BHK')
+    Size = st.number_input('Enter Size of the Land in square Feet (900 sqm is a plot)')
+    bhk = st.number_input('Enter number of Bedroom, Hall and Kitchen')
 
     #when 'predict' is clicked, make prediction
     if st.button('Make Prediction'):
