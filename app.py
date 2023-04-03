@@ -7,7 +7,7 @@ clf = pickle.load(pickle_in)
 #@st.cache()
 @st.cache_data()
 def make_prediction(bhk, Bathroom, Size, City):
-    city_enc = -1
+    #city_enc = -1
     if City == 'Mumbai':
         city_enc = 5
     elif City == 'Chennai':
@@ -41,15 +41,15 @@ def main():
 
     img = Image.open("house-rent.jpg")
     resized_img = img.resize((800, 300))
-    st.image(resized_img, caption="House for rent in downtown")
+    st.image(resized_img, caption="House for rent in India")
 
 
     st.markdown(html_temp, unsafe_allow_html=True)
     #following lines create the visuals
     City = st.selectbox('City', ('Mumbai', 'Chennai', 'Bangalore', 'Hyderabad', 'Delhi', 'Kolkata'))    
-    Bathroom = st.number_input('Enter number of Bathroom')
-    Size = st.number_input('Enter Size of the Land')
-    bhk = st.number_input('Enter number of BHK')
+    Bathroom = st.number_input('Enter number of Bathroom', step = 1)
+    Size = st.number_input('Enter Size of the Land', step = 1)
+    bhk = st.number_input('Enter number of BHK', step= 1)
 
     #when 'predict' is clicked, make prediction
     if st.button('Make Prediction'):
