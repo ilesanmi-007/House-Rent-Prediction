@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>House Prices Prediction by Ilesanmi</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div style="background-color:green;padding:13px">
+        <h1 style="color:blue;text-align:center;">House Prices Prediction by Ilesanmi</h1>
+    </div>
+    <form id="prediction-form">
+        <label for="bhk">BHK:</label>
+        <input type="number" name="bhk" id="bhk" required><br>
+        <label for="bathroom">Bathroom:</label>
+        <input type="number" name="bathroom" id="bathroom" required><br>
+        <label for="size">Size:</label>
+        <input type="number" name="size" id="size" required><br>
+        <label for="city">City:</label>
+        <select name="city" id="city">
+            <option value="Mumbai">Mumbai</option>
+            <option value="Chennai">Chennai</option>
+            <option value="Bangalore">Bangalore</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Kolkata">Kolkata</option>
+        </select><br>
+        <button type="submit" id="predict-button">Make Prediction</button>
+    </form>
+    <div id="result"></div>
+    <script>
+        $(document).ready(function() {
+            $('#prediction-form').submit(function(event) {
+                event.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '/predict',
+                    data: $(this).serialize(),
+                    success: function(result) {
+                        $('#result').text('The price is most likely: ' + result);
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
